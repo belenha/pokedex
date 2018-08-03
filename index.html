@@ -26,12 +26,35 @@
     <main class="container">
         <section class="row center-align">
             <input class="col s12" id="pokeName" type="text" placeholder="Ingresa el nombre de un pokemon">
-            <button type="button" id="pokeBtn" class="btn-flat red darken-3 white-text">Buscar pokemon</button>
+            <button type="button" id="pokeBtn" href="#pokemodal" class="btn-flat red darken-3 white-text modal-trigger">Buscar pokemon</button>
         </section>
         <section>
             <div class="col s12 center-align" id="poke-container"></div>
         </section>
     </main>
+    <!-- modal -->
+    <div id="pokemodal" class="modal">
+        <div class="modal-content center-align">
+            <h4 id="namePok">namePok</h4>
+            <p id="image">image</p>
+            <p id="type">type</p>
+            <p id="ability1">ability1</p> 
+            <p id="ability2">ability2</p> 
+            <p id="speed">speed</p> 
+            <p id="specialDefend">specialDefend</p> 
+            <p id="specialAttack">specialAttack</p> 
+            <p id="attack">attack</p> 
+            <p id="defense">defense</p> 
+            <p id="hp">hp</p> 
+            <p id="weight">weight</p> 
+            <p id="height">height</p> 
+            <p id="identificator">id</p> 
+        </div>
+        <div class="modal-footer">
+            <!--<a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>-->
+            <a href="#!" class="modal-close waves-effect waves-light btn blue darken-4">OK</a>
+        </div>
+    </div>
     <footer class="page-footer red darken-3">
         <div class="container">
             <div class="row">

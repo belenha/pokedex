@@ -1,9 +1,7 @@
 var minName;
-var pokemonContainer = $("#poke-container");
+var pokemonContainer = $("#pokemons");
 var zeros = "00";
 var zero = "0";
-
-$('.modal').modal();
 
 $.ajax({
     url: `https://pokeapi.co/api/v2/pokemon/?limit=806`,
@@ -12,40 +10,44 @@ $.ajax({
     crossDomain: true
 }).done(pokemon).fail(mistake);
 
-function pokemon(data) {
-    for (var i = 1; i < 807; i++) {         // se itera para obtener las imágenes de los pokemones y los nombres
 
+function pokemon(data) {
+    for (var i = 1; i < 806; i++) {
         if (i < 10) {
             var picture = $(`<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${zeros}${i}.png">`);
-            // console.log(picture);
             var paragraph = $('<p>').text(data.results[i - 1].name);
             pokemonContainer.append(picture, paragraph);
         } else if (i <= 99) {
             var picture = $(`<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${zero}${i}.png">`);
-            // console.log(picture);
+            //console.log(picture);
             var paragraph = $('<p>').text(data.results[i - 1].name);
             pokemonContainer.append(picture, paragraph);
         } else {
             var picture = $(`<img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${i}.png">`);
             // console.log(picture);
             var paragraph = $('<p>').text(data.results[i - 1].name);
-            pokemonContainer.append(picture);
+            pokemonContainer.append(picture, paragraph);
         }
     }
-
 }
+
 
 function mistake() {
-    console.log('error');
-
+    console.log("Error");
 }
 
-// Se le da la función al botón para que aparezca un modal con el pokemon buscado
-$('#pokeBtn').click(function (e) {   
+
+
+
+$('#search-poke').click(function (e) {
     e.preventDefault();
-    var pokemonName = $('#pokeName').val();
+    var pokemonName = $('#poke-text').val();
     minName = pokemonName.toLowerCase();
     getPokemon();
+
+    $('#exampleModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
 })
 
 function getPokemon() {
@@ -58,55 +60,55 @@ function getPokemon() {
 }
 
 function response(data) {
-    // console.log(data);
+    console.log(data);
     var name = data.name;
-    // console.log(name);
+    console.log(name);
 
     var url = data.sprites.front_default;
-    // console.log(url);
+    console.log(url);
     var image = "<img src='" + url + "'/>";
 
     var type = data.types[0].type.name;
-    // console.log(type);
+    console.log(type);
 
     var abilities = data.abilities[0].ability.name;
-    // console.log(abilities);
+    console.log(abilities);
 
-    var abilities2 = data.abilities[1].ability.name;
-    // console.log(abilities2);
+    var abilitiesTwo = data.abilities[1].ability.name;
+    console.log(abilitiesTwo);
 
     var speed = data.stats[0].stat.name + ': ' + data.stats[0].base_stat;
-    // console.log(speed);
+    console.log(speed);
 
     var specialDefense = data.stats[1].stat.name + ': ' + data.stats[1].base_stat;
-    // console.log(specialDefense);
+    console.log(specialDefense);
 
     var specialAttack = data.stats[2].stat.name + ': ' + data.stats[2].base_stat;
-    // console.log(specialAttack);
+    console.log(specialAttack);
 
     var defense = data.stats[3].stat.name + ': ' + data.stats[3].base_stat;
-    // console.log(defense);
+    console.log(defense);
 
     var attack = data.stats[4].stat.name + ': ' + data.stats[4].base_stat;
-    // console.log(attack);
+    console.log(attack);
 
     var hp = data.stats[5].stat.name + ': ' + data.stats[5].base_stat;
-    // console.log(hp);
+    console.log(hp);
 
-    var weight = 'weight: ' + data.weight;
-    // console.log(weight / 10 + "kg");
+    var weight = data.weight;
+    console.log(weight / 10 + "kg");
 
-    var height = 'height: ' +  data.height;
-    // console.log(height / 10 + "m");
+    var height = data.height;
+    console.log(height / 10 + "m");
 
-    var identificador = 'Id: ' + data.id;
-    // console.log(identificador);
+    var identificador = data.id;
+    console.log(identificador);
 
 
     var $pname = $('<p/>').addClass('infoPoke').text(name);
     var $ptype = $('<p/>').addClass('infoPoke').text(type);
     var $pabilities = $('<p/>').addClass('infoPoke').text(abilities);
-    var $pabilities2 = $('<p/>').addClass('infoPoke').text(abilities2);
+    var $pabilities2 = $('<p/>').addClass('infoPoke').text(abilitiesTwo);
     var $pspeed = $('<p/>').addClass('infoPoke').text(speed);
     var $pspecialDefense = $('<p/>').addClass('infoPoke').text(specialDefense);
     var $pspecialAttack = $('<p/>').addClass('infoPoke').text(specialAttack);
@@ -115,26 +117,12 @@ function response(data) {
     var $php = $('<p/>').addClass('infoPoke').text(hp);
     var $pweight = $('<p/>').addClass('infoPoke').text(weight);
     var $pheight = $('<p/>').addClass('infoPoke').text(height);
-    var $pidentificator = $('<p/>').addClass('infoPoke').text(identificador);
+    var $pidentificador = $('<p/>').addClass('infoPoke').text(identificador);
 
-    $("#namePok").html($pname);
-    $("#image").html(image);
-    $("#type").html($ptype);
-    $("#ability1").html($pabilities);
-    $("#ability2").html($pabilities2);
-    $("#speed").html($pspeed);
-    $("#specialDefend").html($pspecialDefense);
-    $("#specialAttack").html($pspecialAttack);
-    $("#attack").html($pattack);
-    $("#defense").html($pdefense);
-    $("#hp").html($php);
-    $("#weight").html($pweight);
-    $("#height").html($pheight);
-    $("#identificator").html($pidentificator);
 
-    //    var pokemonContainer = $("#poke-container");
-    //     pokemonContainer.append(image, $pname,$ptype,$pabilities,$pabilities2,$pspeed,$pspecialDefense,
-    //                             $pspecialAttack,$pdefense ,$pattack,$php,$pweight,$pheight,$pidentificador);
+    var pokemonContainer = $("#profile-pokemon");
+    pokemonContainer.append(image, $pname, $ptype, $pabilities, $pabilities2, $pspeed, $pspecialDefense,
+        $pspecialAttack, $pdefense, $pattack, $php, $pweight, $pheight, $pidentificador);
 }
 
 function error() {
