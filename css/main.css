@@ -1,19 +1,47 @@
 *{
     box-sizing: border-box;
+    font-family: 'Karla', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 body{
-    background-image: url("../assets/pokepic.jpg");
+    /* background-image: url("https://cdn.dribbble.com/users/146798/screenshots/2845365/pokeball-dribbble-01.png");
+    background-repeat: initial; */
+}
+nav{
+    background-color: #F6FAFC;
+    height: 180px;
+}
+
+h3{
+    color: #0d47a1;
+    display: inline-block;
+    font-family: 'Bowlby One', cursive;
+    left: 20px;
+    margin: 0;
+    position: relative;
+}
+#pokeball{
+    height: 180px;
+    position: relative;
+    width: auto;
+}
+
+#pokegif{
+    height: 200px;
+    position: relative;
+    top: 10px;
+    width: auto;
 }
 
 #poke-container{
-    font-family: 'Karla', sans-serif;
     font-size: 16px;
 }
 
 #poke-container img{
     background-color: white;
-    /* border: 2px solid black; */
+    border: 2px solid #c62828;
+    border-radius: 20px;
+    margin: 2px 5px;
 }

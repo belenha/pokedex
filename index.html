@@ -6,24 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pokedex</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One|Karla" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="container">
+<body>
+    <nav class="z-depth-0">
+        <div class="nav-wrapper valign-wrapper">
+            <h3>Pokedex</h3>
+            <a href="https://pokeapi.co/docsv2/" class="brand-logo right" target="_blank">
+                <img class="responsive-img" id="pokeball" src="https://cdn.dribbble.com/users/146798/screenshots/2845365/pokeball-dribbble-01_1x.png" alt="">
+            </a>
+        </div>
+    </nav>
     <header class="row">
         <div class="center-align col s12">
-            <img src="assets/pokemon_logo_PNG6.png" alt="" class="responsive-img">
+            <img  id="pokegif" src="https://cdn.dribbble.com/users/4874/screenshots/2138265/pokebiome007_gif.gif" alt="" class="responsive-img">
         </div>
     </header>
-    <section class="row center-align">
-        <input class="col s12" id="pokeName" type="text" placeholder="Ingresa el nombre de un pokemon">
-        <button type="button" id="pokeBtn" class="btn">Buscar pokemon</button>
-    </section>
-    <section>
-        <main class="col s12 center-align" id="poke-container"></main>
-    </section>
-            
-                
+    <main class="container">
+        <section class="row center-align">
+            <input class="col s12" id="pokeName" type="text" placeholder="Ingresa el nombre de un pokemon">
+            <button type="button" id="pokeBtn" class="btn-flat red darken-3 white-text">Buscar pokemon</button>
+        </section>
+        <section>
+            <div class="col s12 center-align" id="poke-container"></div>
+        </section>
+    </main>
+    <footer class="page-footer red darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <p class="white-text">Elaborado para Laboratoria</p>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
