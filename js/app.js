@@ -48,6 +48,7 @@ $('#pokeBtn').click(function (e) {
     getPokemon();
 })
 
+// función para buscar pokemon por nombre
 function getPokemon() {
     $.ajax({
         url: `https://pokeapi.co/api/v2/pokemon/${minName}`,
@@ -57,6 +58,7 @@ function getPokemon() {
     }).done(response).fail(error);
 }
 
+// Se obtienen los datos del pokemon
 function response(data) {
     // console.log(data);
     var name = data.name;
@@ -66,13 +68,13 @@ function response(data) {
     // console.log(url);
     var image = "<img src='" + url + "'/>";
 
-    var type = data.types[0].type.name;
+    var type = 'Type: ' + data.types[0].type.name;
     // console.log(type);
 
-    var abilities = data.abilities[0].ability.name;
+    var abilities = 'Ability: ' + data.abilities[0].ability.name;
     // console.log(abilities);
 
-    var abilities2 = data.abilities[1].ability.name;
+    var abilities2 = 'Ability 2: ' + data.abilities[1].ability.name;
     // console.log(abilities2);
 
     var speed = data.stats[0].stat.name + ': ' + data.stats[0].base_stat;
@@ -93,7 +95,7 @@ function response(data) {
     var hp = data.stats[5].stat.name + ': ' + data.stats[5].base_stat;
     // console.log(hp);
 
-    var weight = 'weight: ' + data.weight;
+    var weight = 'weight: ' + data.weight/10 + 'kg';
     // console.log(weight / 10 + "kg");
 
     var height = 'height: ' +  data.height;
@@ -117,6 +119,8 @@ function response(data) {
     var $pheight = $('<p/>').addClass('infoPoke').text(height);
     var $pidentificator = $('<p/>').addClass('infoPoke').text(identificador);
 
+
+    // Datos para el modal
     $("#namePok").html($pname);
     $("#image").html(image);
     $("#type").html($ptype);
