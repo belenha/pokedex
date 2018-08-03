@@ -98,7 +98,7 @@ function response(data) {
     var weight = 'weight: ' + data.weight/10 + 'kg';
     // console.log(weight / 10 + "kg");
 
-    var height = 'height: ' +  data.height;
+    var height = 'height: ' +  data.height + '0 cm';
     // console.log(height / 10 + "m");
 
     var identificador = 'Id: ' + data.id;
